@@ -1,19 +1,19 @@
 package com.mainacad.service;
 
-import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class DataCollector {
 
-    private static ConcurrentHashMap<Long, String> cache = new ConcurrentHashMap<>();
+    private static ConcurrentHashMap<AtomicLong, String> cache = new ConcurrentHashMap<>();
 
 
-    public static void addDataByKey(Long key, String value) {
+    public static void addDataByKey(AtomicLong key, String value) {
         cache.put(key, value);
     }
 
     public static void storeDataByTime(Long time) {
-        cache.keySet().stream().filter(it -> it >= time).forEach(it -> System.out.println(cache.get(it)));
+        cache.keySet().stream().filter(it -> it.get() >= time).forEach(it -> System.out.println(cache.get(it)));
     }
 
 }
