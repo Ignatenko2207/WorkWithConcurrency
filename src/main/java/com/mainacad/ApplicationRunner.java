@@ -16,8 +16,8 @@ public class ApplicationRunner
 {
     public static void main( String[] args )
     {
-//        List<String> logins = Collections.synchronizedList(new ArrayList<>());
-        List<String> logins = new ArrayList<>();
+        List<String> logins = Collections.synchronizedList(new ArrayList<>());
+//        List<String> logins = new ArrayList<>();
         List<Thread> threads = new ArrayList<>();
 
         for (int i = 0; i < 10000; i++) {
